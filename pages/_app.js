@@ -3,6 +3,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "../utils/MUIConfig/theme";
 import createEmotionCache from "../utils/MUIConfig/createEmotionCache";
 import { CacheProvider } from "@emotion/react";
+import { Provider } from "react-redux";
+import { store } from "../app/store";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -13,10 +15,12 @@ function MyApp({
 }) {
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     </CacheProvider>
   );
 }
