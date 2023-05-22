@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Box, Button, Card, Typography, Grid } from "@mui/material";
 import { theme } from "@/utils/MUIConfig/theme@";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const ItemLink = styled(Link)(({ theme }) => ({
   color: "white",
@@ -22,6 +23,7 @@ const BoxDesktop = styled(Card)(({ theme }) => ({
 }));
 
 export default function NavbarDesktop() {
+  const router = useRouter();
   return (
     <>
       <BoxDesktop elevation={7} sx={{ py: 2 }}>
@@ -38,7 +40,9 @@ export default function NavbarDesktop() {
                 <Grid item xs={4}>
                   <Button
                     fullWidth
-                    href="/"
+                    onClick={() => {
+                      router.push("/");
+                    }}
                     variant="outlined"
                     color="secondary"
                   >
@@ -47,7 +51,9 @@ export default function NavbarDesktop() {
                 </Grid>
                 <Grid item xs={4}>
                   <Button
-                    href="/my-cart"
+                    onClick={() => {
+                      router.push("/my-cart");
+                    }}
                     variant="outlined"
                     fullWidth
                     color="secondary"

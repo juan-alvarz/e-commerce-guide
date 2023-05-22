@@ -35,7 +35,7 @@ export default function ButtonAddToCart({ item }) {
       color={alreadyExists ? "secondary" : "primary"}
       startIcon={alreadyExists ? <CheckCircleIcon /> : <ShoppingCartIcon />}
     >
-      {alreadyExists ? "Add To Cart" : "Added To Your Cart"}
+      {alreadyExists ? "Added To Your Cart" : "Add To Cart"}
     </Button>
   );
 }

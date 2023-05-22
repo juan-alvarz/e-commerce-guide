@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import Navbar from "../Navbar";
 import { useEffect } from "react";
-import { Card, Typography, Grid, Button } from "@mui/material";
+import { Card, Typography, Grid, Button, Box } from "@mui/material";
 import ButtonAddToCart from "../ButtonAddToCart";
+import CardGame from "../ContainerGames/CardGame";
 
 export default function MyCartPage() {
   const allCartItems = useSelector(
@@ -20,33 +21,13 @@ export default function MyCartPage() {
         {allCartItems ? (
           allCartItems.map((item) => (
             <>
-              <Grid item xs={12} md={6}>
-                <Card variant="outlined">
-                  <Grid
-                    sx={{ px: 1 }}
-                    alignItems="center"
-                    container
-                    spacing={2}
-                  >
-                    <Grid item xs={6}>
-                      <Typography
-                        variant="h5"
-                        sx={{ p: 2 }}
-                        color="textPrimary"
-                      >
-                        {item.name}
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Button fullWidth variant="contained" color="secondary">
-                        Buy by ${item.price}
-                      </Button>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <ButtonAddToCart item={item} />
-                    </Grid>
-                  </Grid>
-                </Card>
+              <Grid item xs={12} md={4}>
+                <CardGame key={item.id} game={item} />
+                <Box align="center" sx={{ mt: 1 }}>
+                  <Button variant="contained" color="primary">
+                    Buy by ${item.price}
+                  </Button>
+                </Box>
               </Grid>
             </>
           ))
