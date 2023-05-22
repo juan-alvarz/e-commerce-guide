@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { users } from "@/data/users@";
 import { videogames } from "@/data/videogames@";
+import { v4 as uid } from "uuid";
 
 const allUsers = users;
 const initialUser = users[0];
@@ -14,6 +15,24 @@ const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
+    register: (state, action) => {
+      const { fullName, email, password, age } = action.payload;
+      const newUser = {
+        id: uid(),
+        fullName,
+        email,
+        password,
+        age,
+        cartItems: [],
+      };
+
+      state.allUsers.push(newUser);
+
+      // return {
+      //   ...state,
+      //   allUsers: updatedUsers,
+      // };
+    },
     login: (state, action) => {
       const { email, password } = action.payload;
       console.log({ email, password });
@@ -61,6 +80,7 @@ const usersSlice = createSlice({
   },
 });
 
-export const { login, addToCart, removeFromCart } = usersSlice.actions;
+export const { register, login, addToCart, removeFromCart } =
+  usersSlice.actions;
 
 export default usersSlice.reducer;

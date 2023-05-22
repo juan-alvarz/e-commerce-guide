@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { Card, Typography, Grid, Button, Box } from "@mui/material";
 import ButtonAddToCart from "../ButtonAddToCart";
 import CardGame from "../ContainerGames/CardGame";
+import { theme } from "@/utils/MUIConfig/theme@";
+import BeginCheckout from "../BeginCheckout";
 
 export default function MyCartPage() {
   const allCartItems = useSelector(
@@ -24,9 +26,10 @@ export default function MyCartPage() {
               <Grid item xs={12} md={4}>
                 <CardGame key={item.id} game={item} />
                 <Box align="center" sx={{ mt: 1 }}>
-                  <Button variant="contained" color="primary">
+                  {/* <Button variant="contained" color="primary">
                     Buy by ${item.price}
-                  </Button>
+                  </Button> */}
+                  <BeginCheckout game={item} />
                 </Box>
               </Grid>
             </>

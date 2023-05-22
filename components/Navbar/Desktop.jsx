@@ -3,6 +3,7 @@ import { Box, Button, Card, Typography, Grid } from "@mui/material";
 import { theme } from "@/utils/MUIConfig/theme@";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const ItemLink = styled(Link)(({ theme }) => ({
   color: "white",
@@ -23,6 +24,7 @@ const BoxDesktop = styled(Card)(({ theme }) => ({
 }));
 
 export default function NavbarDesktop() {
+  const currentUser = useSelector((state) => state.users.currentUser);
   const router = useRouter();
   return (
     <>
@@ -31,7 +33,7 @@ export default function NavbarDesktop() {
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Typography sx={{ ml: 2 }} variant="h6" color="white">
-                Video Games
+                Video Games | {currentUser ? currentUser.fullName : ""}
               </Typography>
             </Grid>
             <Grid item xs={6}>
