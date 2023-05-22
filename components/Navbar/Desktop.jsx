@@ -46,7 +46,12 @@ export default function NavbarDesktop() {
                   </Button>
                 </Grid>
                 <Grid item xs={4}>
-                  <Button variant="outlined" fullWidth color="secondary">
+                  <Button
+                    href="/my-cart"
+                    variant="outlined"
+                    fullWidth
+                    color="secondary"
+                  >
                     My Cart
                   </Button>
                 </Grid>

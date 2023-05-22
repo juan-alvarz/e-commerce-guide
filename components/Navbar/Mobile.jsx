@@ -66,7 +66,7 @@ function NavbarMobile() {
                 p: 2,
               }}
             >
-              <ItemLink href={"/cart"}>My Cart</ItemLink>
+              <ItemLink href={"/my-cart"}>My Cart</ItemLink>
             </Box>
           </Box>
         </Drawer>
